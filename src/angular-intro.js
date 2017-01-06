@@ -33,6 +33,7 @@
                 ngIntroOnchange: '=',
                 ngIntroOnbeforechange: '=',
                 ngIntroOnafterchange: '=',
+                ngIntroOncontact: '=',
                 ngIntroAutostart: '=',
                 ngIntroAutorefresh: '='
             },
@@ -100,6 +101,14 @@
                     if (scope.ngIntroOnafterchange) {
                         intro.onafterchange(function(targetElement){
                             scope.ngIntroOnafterchange.call(this, targetElement, scope);
+                            $timeout(function() {scope.$digest();});
+                        });
+                    }
+
+                    if (scope.ngIntroOncontact) {
+                        intro.oncontact(function(){
+                            intro.exit();
+                            scope.ngIntroOncontact.call(this, scope);
                             $timeout(function() {scope.$digest();});
                         });
                     }
