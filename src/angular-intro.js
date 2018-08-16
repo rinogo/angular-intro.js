@@ -1,8 +1,8 @@
 (function (root, factory) {
     if (typeof define === 'function' && define.amd) {
-        define(["ionic-angular/release/js/angular/angular.js", "intro.js"], factory);
+        define(["angular", "intro.js"], factory);
     } else if (typeof exports === 'object') {
-        module.exports = factory(require('ionic-angular/release/js/angular/angular.js'), require('intro.js'));
+        module.exports = factory(require('angular'), require('intro.js'));
     } else {
         root.angularIntroJs = factory(root.angular, root.introJs);
     }
